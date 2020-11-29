@@ -56,6 +56,10 @@ def operaciones_basicas(num1, num2):
     print("El producto de {} y {} es {}".format(num1,num2, num1 * num2))
     print("La division de {} y {} es {}".format(num1,num2, num1 / num2))
 
+def tabla_multiplicar(numero):
+    for i in range (1,10 + 1):
+        print("{}  *  {}  = {}".format(int(numero), i, int(numero) * i))
+
 # Ejercicio 8
 
 def es_impar(numero):
@@ -70,4 +74,13 @@ def cantidad_digitos_cifra(numero):
 def multiplo10_previo(numero):
     return "No hay multiplo de 10 previo" if numero < 19 else (numero-1) // 10 * 10
     
-  
+# Ejercicio 10  funcion para usar en el programa Ejercicio10adicionales2.py
+
+def numero_triangular(numero):
+    iterador = 1
+    retorno = 0
+    while iterador <= numero:
+        retorno += iterador 
+        print ("{} - {}".format(iterador,retorno))
+        iterador += 1
+     
