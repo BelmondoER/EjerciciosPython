@@ -83,4 +83,18 @@ def numero_triangular(numero):
         retorno += iterador 
         print ("{} - {}".format(iterador,retorno))
         iterador += 1
-     
+
+# Ejercicio 14 
+
+def de_HHMMSS_a_segundos(horas,minutos,segundos):
+    return (((horas*60)+minutos)*60)+segundos  
+
+def de_segundos_a_HHMMSS(segundos):
+    hora=[]
+    minutos = segundos // 60
+    horas = minutos // 60
+    hora.append(horas)
+    hora.append(minutos%60)
+    hora.append(segundos%60)
+    return hora
+
