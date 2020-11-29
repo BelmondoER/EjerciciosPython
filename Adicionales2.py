@@ -56,6 +56,18 @@ def operaciones_basicas(num1, num2):
     print("El producto de {} y {} es {}".format(num1,num2, num1 * num2))
     print("La division de {} y {} es {}".format(num1,num2, num1 / num2))
 
+# Ejercicio 8
+
+def es_impar(numero):
+    return 0 if numero % 2 == 0 else 1 
+
+def es_par(numero):
+    return 0 if es_impar(numero) else 1 
+
+def cantidad_digitos_cifra(numero):
+    return len(str(numero))     
+
+def multiplo10_previo(numero):
+    return "No hay multiplo de 10 previo" if numero < 19 else (numero-1) // 10 * 10
     
-
-
+  
