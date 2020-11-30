@@ -1,4 +1,6 @@
 import math
+import calendar
+
 
 
 
@@ -98,3 +100,91 @@ def de_segundos_a_HHMMSS(segundos):
     hora.append(segundos%60)
     return hora
 
+# Ejercicio 16  Matriz de identidad
+
+def matriz_identidad(dimension):
+    print("1 ", end= "")
+    cont = 0
+    for i in range (1,(dimension * dimension)+1):
+        if i%dimension == 0 and i != dimension*dimension:
+            print("")
+            print("0 ", end="")  
+            cont += 1
+        elif cont == dimension:
+            print("1 ", end="") 
+            cont = 0   
+        else:
+            if i != dimension*dimension:print("0 ", end="")  
+            cont += 1
+    print("")
+
+# Ejercicio 17 
+
+def es_bisiesto(año):
+    return True if año%4 == 0 and (año /400 and not año/100 == 0) else False
+
+def cuantos_dias_mes(mes,año):
+    dias = calendar.monthrange(año,mes)
+    return dias[1]
+
+def fecha_valida(dd,mm,aaaa):
+ 
+    validador = True
+    if dd>28 and mm == 2 and not es_bisiesto(aaaa):
+        validador = False
+        print("Fecha invalida")
+    elif mm > 12 or mm < 1:
+        validador = False   
+        print("Fecha invalida") 
+    elif cuantos_dias_mes(mm,aaaa)< dd or dd < 1:
+        validador = False
+        print("Fecha invalida")
+    elif aaaa > 3333 or aaaa < 0:
+        validador = False
+        print("Fecha invalida")
+    return validador    
+
+def quedan_del_mes(dia,mes,año):
+    fecha_valida(dia,mes,año)
+    return cuantos_dias_mes(mes,año)-dia
+
+def dias_hasta_findeaño(dia,mes,año):
+    fecha_valida(dia,mes,año)
+    diasTotales = 0 
+    diasPasados = dia
+    for i in range(1,mes):
+        diasPasados += cuantos_dias_mes(i,año)
+    for i in range(1,12+1):
+        diasTotales += cuantos_dias_mes(i,año)
+    return diasTotales - diasPasados
+
+
+def dias_desde_añonuevo(dia, mes, año):
+    fecha_valida(dia,mes,año)
+    diasPasados = dia
+    for i in range(1,mes):
+        diasPasados += cuantos_dias_mes(i,año)
+    return diasPasados
+
+def tiempo_entre_fechas(dia1, mes1, año1, dia2, mes2, año2):
+    fecha_valida(dia1, mes1, año1) 
+    fecha_valida(dia2, mes2, año2)
+    total = 0
+    for i in range(año1+1, año2):
+        if es_bisiesto(i):
+            total-= 1
+        for j in range(1,12+1):
+            total += cuantos_dias_mes(j,i)
+    diferencia = dias_desde_añonuevo(dia2,mes2,año2) + total + dias_hasta_findeaño(dia1, mes1, año1) 
+    tiempoTranscurrido = [diferencia//365, diferencia%365//30, diferencia%365%30]
+    return tiempoTranscurrido 
+    
+    
+
+
+
+
+    
+        
+
+  
