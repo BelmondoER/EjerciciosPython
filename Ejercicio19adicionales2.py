@@ -24,11 +24,19 @@ def decimal_a_romanos(año):
         cifra += "D" 
         cien = (remanente- quinientos*500) // 100
         remanente -= quinientos*500
-    
+    quinientos = remanente // 500
+
+    if remanente >=400:
+        cifra += "CD"
+        conD = False
+        cien = (remanente-400) // 100
+        remanente -= 400       
     cien = remanente // 100
+
     if cien > 0:
         cifra += "C" * cien
         remanente -= cien * 100
+
     if remanente >= 90:
         cifra += "XC"
         conL = False
@@ -40,8 +48,14 @@ def decimal_a_romanos(año):
         cifra += "L"
         diez = (remanente - cincuenta *50) // 10
         remanente -= cincuenta * 50
-   
-    diez = remanente // 10     
+
+    if remanente >=40:
+        cifra += "XL"
+        conL= False
+        diez= (remanente-40) // 10
+        remanente -= 40   
+    diez = remanente // 10 
+
     if diez > 0:
         cifra += "X"  * diez
         remanente -= diez * 10
@@ -52,20 +66,25 @@ def decimal_a_romanos(año):
         uno = (remanente - 9)
         remanente -= 9        
     cinco = remanente // 5
+
     if cinco >0 and conV:
         cifra += "V"
         uno = (remanente - cinco * 5)
         remanente -= cinco * 5
+
     if remanente >= 4:
         cifra += "IV"
         conV = False
         uno = (remanente - 4)
         remanente -= 4       
     uno = remanente  
+
     if uno >0 :
         cifra += "I"* uno
         remanente -= uno * 1
-    print("El numero romano {} corresponde al decimal {}".format(cifra,año))  
+    print("")
+    print("El numero romano {} corresponde al decimal {}".format(cifra,año)) 
+    print("") 
 
         
 
