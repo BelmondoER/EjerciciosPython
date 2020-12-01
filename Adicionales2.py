@@ -179,12 +179,92 @@ def tiempo_entre_fechas(dia1, mes1, año1, dia2, mes2, año2):
     tiempoTranscurrido = [diferencia//365, diferencia%365//30, diferencia%365%30]
     return tiempoTranscurrido 
     
-    
+# Ejercicio 17  devuelve el dia de la semana en un rango ingresado entre 1 y 366 (01/01 fue lunes)
+
+def dia_de_la_semana(diaAño):
+    semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
+    return semana [diaAño % 7]  
+
+# Ejercicio 22 
+
+def genera_primos(limite):
+    listaDePrimos=[]
+    for i in range(1,limite +1):
+        cont = 0
+        for j in range(1,limite+1):
+            if i%j == 0:
+                cont += 1
+        if cont <= 2 and i != 1:
+            listaDePrimos.append(i) 
+    return listaDePrimos       
+
+
+def factores_primos(entero): 
+    listaDePrimos = genera_primos(entero)
+    factoresPrimos = [entero]
+    print("")
+    print(entero, end = " ")
+    dividendo = entero
+    for primo in listaDePrimos:
+        while dividendo % primo == 0 : 
+            if dividendo % primo == 0:
+                factoresPrimos.append(primo)
+                print(primo)
+                dividendo = dividendo / primo
+                if dividendo != 0:
+                    factoresPrimos.append(int(dividendo))
+                    print(int(dividendo), end = " ")
+    print(" ") 
+         
+# Ejercicio 24
+
+def suma_divisores(numero):
+    total = 0
+    for i in range(1,numero+1):
+        if numero % i == 0 and numero != 0: 
+            total += i
+    return total - numero        
+"""
+La consigna de las funciones siguientes me pide que "usando la funcion anterior" y la funcion anterior
+devuelve un entero que es la suma de los divisores menos el numero dado. 
+  Con esto supongo que debo usar lo que devuelve: un entero.
+
+        a resolver
+
+"""
 
 
 
+#Ejercicio 26 
 
-    
+def multiplos_menores(numero1, numero2):
+    cont = 0
+    for i in range(1,numero2+1):
+        if numero1 * i <=numero2:
+            cont +=1
+    return cont        
         
+def multiplos_menores2(numero1, numero2):
+    cont = 1
+    while  numero1 * cont <=numero2:
+            cont += 1
+    return cont -1      
 
-  
+print(multiplos_menores(3, 81),multiplos_menores2(3, 81))    
+
+#Ejercicio 27
+
+def imprimir_primos_hasta(limite):
+
+    primos = genera_primos(limite)
+    for primo in primos:
+        print(primo) 
+
+# Ejercicio 28         
+
+def esta_enla_cifra(digito,numero):
+    resultado = False
+    for i in str(numero):
+        if str(digito) == i: resultado = True
+    return resultado
+
